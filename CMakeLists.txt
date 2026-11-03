@@ -21,13 +21,26 @@ qt_add_resources(appScrambly "assets"
     PREFIX "/"
     FILES
         assets/audio/hover_effect.mp3
-        assets/fonts/liberation_mono_bold.ttf
-        assets/fonts/liberation_mono_regular.ttf
-        assets/fonts/liberation_sans_bold.ttf
-        assets/fonts/liberation_sans_regular.ttf
-        assets/fonts/liberation_serif_bold.ttf
-        assets/fonts/liberation_serif_regular.ttf
-        assets/fonts/vt_323.ttf
+        assets/fonts/space_grotesk_bold.ttf
+        assets/fonts/space_grotesk_medium.ttf
+        assets/fonts/space_grotesk_regular.ttf
+        assets/fonts/space_mono_bold.ttf
+        assets/fonts/space_mono_regular.ttf
+        assets/images/icons/ic_account.svg
+        assets/images/icons/ic_arrow_back.svg
+        assets/images/icons/ic_arrow_forward.svg
+        assets/images/icons/ic_bolt.svg
+        assets/images/icons/ic_check.svg
+        assets/images/icons/ic_crown.svg
+        assets/images/icons/ic_exit.svg
+        assets/images/icons/ic_help.svg
+        assets/images/icons/ic_lock.svg
+        assets/images/icons/ic_play.svg
+        assets/images/icons/ic_replay.svg
+        assets/images/icons/ic_score.svg
+        assets/images/icons/ic_settings.svg
+        assets/images/icons/ic_success.svg
+        assets/images/icons/ic_trophy.svg
         assets/images/magnifying_glass.svg
 )
 
