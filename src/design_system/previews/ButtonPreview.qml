@@ -13,13 +13,10 @@ Item {
         anchors.centerIn: parent
         spacing: SemanticSizes.spaceLg
 
-        Text {
+        AppText {
             Layout.alignment: Qt.AlignHCenter
             text: Strings.appName + " - " + Strings.buttonShowcaseTitle
-            font.family: TextStyles.headingLG.family
-            font.pixelSize: TextStyles.headingLG.pixelSize
-            font.weight: TextStyles.headingLG.weight
-            color: SemanticColors.textPrimary
+            textStyle: TextStyles.headingLG
         }
 
         RowLayout {
