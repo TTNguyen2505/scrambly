@@ -42,4 +42,3 @@ QtObject {
         offsetY: PrimitiveDepth.depth400
     }
 }
-

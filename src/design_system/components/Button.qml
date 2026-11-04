@@ -110,17 +110,13 @@ T.Button {
                 height: 1
             }
 
-            Text {
+            AppText {
                 id: labelText
                 y: (parent.height - height) / 2
                 visible: root.label.length > 0
                 text: root.label
                 color: root.resolvedTextColor
-                font.family: TextStyles.buttonDefault.family
-                font.pixelSize: root.size === "Small" ? TextStyles.buttonSM.pixelSize : TextStyles.buttonDefault.pixelSize
-                font.weight: root.size === "Small" ? TextStyles.buttonSM.weight : TextStyles.buttonDefault.weight
-                lineHeight: root.resolvedLineHeight
-                lineHeightMode: Text.FixedHeight
+                textStyle: root.size === "Small" ? TextStyles.buttonSM : TextStyles.buttonDefault
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 wrapMode: Text.NoWrap
@@ -156,28 +152,9 @@ T.Button {
         }
 
         layer.enabled: true
-        layer.effect: MultiEffect {
-            shadowEnabled: root.resolvedElevation.enabled
-            shadowColor: root.resolvedElevation.color
-            shadowHorizontalOffset: root.resolvedElevation.offsetX
-            shadowVerticalOffset: root.resolvedElevation.offsetY
-            shadowBlur: root.resolvedElevation.blur
-
-            Behavior on shadowHorizontalOffset {
-                NumberAnimation {
-                    duration: (root.hovered || root.pressed) ? MotionTokens.durationFast : MotionTokens.durationNormal
-                    easing.type: Easing.BezierSpline
-                    easing.bezierCurve: (root.hovered || root.pressed) ? MotionTokens.easeSnap : MotionTokens.easeRelease
-                }
-            }
-
-            Behavior on shadowVerticalOffset {
-                NumberAnimation {
-                    duration: (root.hovered || root.pressed) ? MotionTokens.durationFast : MotionTokens.durationNormal
-                    easing.type: Easing.BezierSpline
-                    easing.bezierCurve: (root.hovered || root.pressed) ? MotionTokens.easeSnap : MotionTokens.easeRelease
-                }
-            }
+        layer.effect: ElevationEffect {
+            elevation: root.resolvedElevation
+            active: root.hovered || root.pressed
         }
     }
 

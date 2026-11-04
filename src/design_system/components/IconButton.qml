@@ -84,28 +84,9 @@ T.Button {
         }
 
         layer.enabled: true
-        layer.effect: MultiEffect {
-            shadowEnabled: root.resolvedElevation.enabled
-            shadowColor: root.resolvedElevation.color
-            shadowHorizontalOffset: root.resolvedElevation.offsetX
-            shadowVerticalOffset: root.resolvedElevation.offsetY
-            shadowBlur: root.resolvedElevation.blur
-
-            Behavior on shadowHorizontalOffset {
-                NumberAnimation {
-                    duration: (root.visualHovered || root.visualPressed) ? MotionTokens.durationFast : MotionTokens.durationNormal
-                    easing.type: Easing.BezierSpline
-                    easing.bezierCurve: (root.visualHovered || root.visualPressed) ? MotionTokens.easeSnap : MotionTokens.easeRelease
-                }
-            }
-
-            Behavior on shadowVerticalOffset {
-                NumberAnimation {
-                    duration: (root.visualHovered || root.visualPressed) ? MotionTokens.durationFast : MotionTokens.durationNormal
-                    easing.type: Easing.BezierSpline
-                    easing.bezierCurve: (root.visualHovered || root.visualPressed) ? MotionTokens.easeSnap : MotionTokens.easeRelease
-                }
-            }
+        layer.effect: ElevationEffect {
+            elevation: root.resolvedElevation
+            active: root.visualHovered || root.visualPressed
         }
     }
 }

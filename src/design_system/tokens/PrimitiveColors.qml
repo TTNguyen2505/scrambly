@@ -22,7 +22,7 @@ QtObject {
 
     readonly property color greenVibrant: "#00e599"
     readonly property color greenPastel: "#d1fae5"
-    
+
     readonly property color pinkVibrant: "#ff69b4"
     readonly property color pinkPastel: "#fce7f3"
 }

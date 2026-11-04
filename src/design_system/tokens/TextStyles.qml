@@ -9,9 +9,11 @@ QtObject {
         property real pixelSize: PrimitiveTypography.size14
         property int weight: PrimitiveTypography.weightRegular
         property real lineHeight: PrimitiveTypography.lineHeight20
-        property real letterSpacing: PrimitiveTypography.letterSpacingNormal
+        property real letterSpacingPercent: PrimitiveTypography.letterSpacingNormal
         property int capitalization: Font.MixedCase
         property color color: SemanticColors.textPrimary
+
+        readonly property real resolvedLetterSpacing: (letterSpacingPercent / 100.0) * pixelSize
     }
 
     readonly property TextStyle displayHero: TextStyle {
@@ -29,14 +31,14 @@ QtObject {
         pixelSize: PrimitiveTypography.size36
         weight: PrimitiveTypography.weightBold
         lineHeight: PrimitiveTypography.lineHeight40
-        letterSpacing: -2
+        letterSpacingPercent: -2
     }
 
     readonly property TextStyle headingLG: TextStyle {
         pixelSize: PrimitiveTypography.size24
         weight: PrimitiveTypography.weightBold
         lineHeight: PrimitiveTypography.lineHeight30
-        letterSpacing: -2
+        letterSpacingPercent: -2
     }
 
     readonly property TextStyle headingMD: TextStyle {
@@ -104,7 +106,7 @@ QtObject {
         pixelSize: PrimitiveTypography.size11
         weight: PrimitiveTypography.weightBold
         lineHeight: PrimitiveTypography.lineHeight14
-        letterSpacing: 5
+        letterSpacingPercent: 5
         capitalization: Font.AllUppercase
     }
 
@@ -113,6 +115,6 @@ QtObject {
         pixelSize: PrimitiveTypography.size10
         weight: PrimitiveTypography.weightBold
         lineHeight: PrimitiveTypography.lineHeight14
-        letterSpacing: 5
+        letterSpacingPercent: 5
     }
 }
