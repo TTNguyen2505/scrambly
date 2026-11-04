@@ -12,6 +12,7 @@ set(design_system_singletons
     tokens/PrimitiveBlur.qml
     tokens/EffectStyles.qml
     tokens/TextStyles.qml
+    tokens/MotionTokens.qml
 )
 
 set_source_files_properties(${design_system_singletons} PROPERTIES
@@ -24,12 +25,25 @@ qt_add_qml_module(design_system
     RESOURCE_PREFIX /qt/qml
     QML_FILES
         ${design_system_singletons}
-        ExamplePrimitiveTokens.qml
-        ExampleSemanticTokens.qml
-        components/ExampleComponent.qml
+        components/Button.qml
+        components/IconButton.qml
 )
+
+# Tự động tách các file Preview ra khỏi bản build Release
+set(design_system_preview_files
+    previews/ButtonPreview.qml
+    previews/IconButtonPreview.qml
+)
+
+if(NOT CMAKE_BUILD_TYPE STREQUAL "Release")
+    qt_target_qml_sources(design_system
+        QML_FILES
+            ${design_system_preview_files}
+    )
+endif()
 
 target_link_libraries(design_system
     PRIVATE
         Qt6::Quick
+        Qt6::QuickEffects
 )

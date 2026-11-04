@@ -2,8 +2,30 @@ pragma Singleton
 import QtQuick
 
 QtObject {
-    readonly property string fontFamilyPrimary: "Space Grotesk"
-    readonly property string fontFamilyMono: "Space Mono"
+    id: root
+
+    readonly property FontLoader fontSpaceGroteskRegular: FontLoader {
+        source: "qrc:/assets/fonts/space_grotesk_regular.ttf"
+    }
+
+    readonly property FontLoader fontSpaceGroteskMedium: FontLoader {
+        source: "qrc:/assets/fonts/space_grotesk_medium.ttf"
+    }
+
+    readonly property FontLoader fontSpaceGroteskBold: FontLoader {
+        source: "qrc:/assets/fonts/space_grotesk_bold.ttf"
+    }
+
+    readonly property FontLoader fontSpaceMonoRegular: FontLoader {
+        source: "qrc:/assets/fonts/space_mono_regular.ttf"
+    }
+
+    readonly property FontLoader fontSpaceMonoBold: FontLoader {
+        source: "qrc:/assets/fonts/space_mono_bold.ttf"
+    }
+
+    readonly property string fontFamilyPrimary: fontSpaceGroteskRegular.name ? fontSpaceGroteskRegular.name : "Space Grotesk"
+    readonly property string fontFamilyMono: fontSpaceMonoRegular.name ? fontSpaceMonoRegular.name : "Space Mono"
 
     readonly property real weightRegular: 400
     readonly property real weightMedium: 500
