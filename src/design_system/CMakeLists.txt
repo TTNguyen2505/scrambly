@@ -25,14 +25,23 @@ qt_add_qml_module(design_system
     RESOURCE_PREFIX /qt/qml
     QML_FILES
         ${design_system_singletons}
+        components/AppText.qml
         components/Button.qml
         components/IconButton.qml
+        components/TextButton.qml
+        components/ProgressBar.qml
+        components/ElevationEffect.qml
+        components/Surface.qml
 )
 
 # Tự động tách các file Preview ra khỏi bản build Release
 set(design_system_preview_files
+    previews/AppTextPreview.qml
     previews/ButtonPreview.qml
     previews/IconButtonPreview.qml
+    previews/TextButtonPreview.qml
+    previews/ProgressBarPreview.qml
+    previews/ElevationPreview.qml
 )
 
 if(NOT CMAKE_BUILD_TYPE STREQUAL "Release")
