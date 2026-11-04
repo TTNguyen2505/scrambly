@@ -4,7 +4,7 @@ project(Scrambly VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 6.8 REQUIRED COMPONENTS Quick QuickEffects)
+find_package(Qt6 6.8 REQUIRED COMPONENTS Quick QuickEffects Svg)
 
 qt_standard_project_setup(REQUIRES 6.8)
 
@@ -16,6 +16,16 @@ qt_add_executable(appScrambly
     src/main.cpp
 )
 
+if(WIN32)
+    file(TO_CMAKE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/assets/images/scrambly_logo.ico" SCRAMBLY_ICON_PATH)
+    configure_file(
+        "${CMAKE_CURRENT_SOURCE_DIR}/assets/images/scrambly_icon.rc.in"
+        "${CMAKE_CURRENT_BINARY_DIR}/scrambly_icon.rc"
+        @ONLY
+    )
+    target_sources(appScrambly PRIVATE "${CMAKE_CURRENT_BINARY_DIR}/scrambly_icon.rc")
+endif()
+
 qt_add_resources(appScrambly "assets"
     PREFIX "/"
     FILES
@@ -25,6 +35,7 @@ qt_add_resources(appScrambly "assets"
         assets/fonts/space_grotesk_regular.ttf
         assets/fonts/space_mono_bold.ttf
         assets/fonts/space_mono_regular.ttf
+        assets/images/scrambly_logo.svg
         assets/images/icons/ic_account.svg
         assets/images/icons/ic_arrow_back.svg
         assets/images/icons/ic_arrow_forward.svg
@@ -55,6 +66,7 @@ target_link_libraries(appScrambly
         coreplugin
         design_systemplugin
         Qt6::Quick
+        Qt6::Svg
 )
 
 include(GNUInstallDirs)
